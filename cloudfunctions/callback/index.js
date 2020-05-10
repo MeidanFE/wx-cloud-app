@@ -20,7 +20,5 @@ exports.main = async (event, context) => {
     }
   })
 
-  console.log(result)
-
   return result
 }

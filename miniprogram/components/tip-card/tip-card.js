@@ -4,9 +4,13 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    type:{
-      type: Number,
-      value: 1
+    item:{
+      type: Object,
+      value: {}
+    },
+    level:{
+      type:Number,
+      value:1
     }
   },
 

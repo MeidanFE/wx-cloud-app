@@ -4,12 +4,21 @@
 module.exports = (ops)=> async (ctx, next) => {
     const {cloud} = ops;
     const wxContext = cloud.getWXContext()
+    const log = cloud.logger()
+    log.info({
+      name: '环境',
+      attributes: {
+        env: wxContext.ENV,
+      },
+    })
+
     ctx.globalData = {
-      openid: wxContext.OPENID,
-      appid: wxContext.APPID,
-      unionid: wxContext.UNIONID,
+      openId: wxContext.OPENID,
+      appId: wxContext.APPID,
+      unionId: wxContext.UNIONID,
       env: wxContext.ENV,
     };
+    
     for(let key in ops){
       ctx[key] = ops[key];
     }

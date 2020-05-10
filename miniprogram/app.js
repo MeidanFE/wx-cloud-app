@@ -1,6 +1,14 @@
 //app.js
+import { fetchOpenid } from "./utils/user.js";
+
 App({
-  onLaunch: function () {
+  async onLaunch() {
+
+    this.globalData = {
+      openId:'',
+      userInfo:{},
+      mapKey:'5NQBZ-2V5WS-OXUO6-6HICL-6RZK3-OPFQY'
+    }
     
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -10,31 +18,21 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
+        env: 'online-meq1l',
         traceUser: true,
       })
 
-      this.getUserInfo()
-    }
-
-    this.globalData = {
-      openid:'',
-      userInfo:{}
+      await this.getUserInfo()
     }
   },
-  getUserInfo: function() {
+  async getUserInfo() {
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.globalData.userInfo = res.userInfo
-            }
-          })
-        }
-      }
-    })
+   let {authSetting} =  await wx.getSetting()
+
+   if(authSetting['scope.userInfo']){
+    this.globalData.userInfo = (await wx.getUserInfo()).userInfo;
+    console.log(getApp().globalData.userInfo)
+    await fetchOpenid();
+   };
   },
 })

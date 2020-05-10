@@ -29,8 +29,8 @@ page {
 }
 
 .user-avatar {
-  width: 64rpx;
-  height: 64rpx;
+  width: 2em;
+  height: 2em;
   margin-right: 20rpx;
   border-radius: 50%;
   vertical-align: middle;

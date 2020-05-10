@@ -1,4 +1,5 @@
 import { fetchOpenid } from "../../utils/user";
+import { getTip,countTip } from "../../api/tip";
 
 
 //index.js
@@ -7,79 +8,75 @@ const app = getApp()
 Page({
   data: {
     userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
+    tips:[],
+    pageNo:1,
+    pageSize:1,
+    hasMore:true,
+    count:{
+      public:0,
+      private:0,
+    }
   },
-
-  onLoad: function() {
+  onLoad() {
+    // const {userInfo} = app.globalData;
+    // this.setData({
+    //   userInfo,
+    // })
+    // this.getPageTip();
+  },
+  onShow(){
     const {userInfo} = app.globalData;
     this.setData({
       userInfo,
     })
-
-    
+    this.countTip();
+    this.getPageTip(1);
   },
-
   async onGetUserInfo(e) {
-    await fetchOpenid();
-
+   
     if (e.detail.userInfo) {
+      await fetchOpenid();
       this.setData({
         userInfo: e.detail.userInfo
       })
-      app.globalData.userInfo = res.userInfo
+      app.globalData.userInfo = e.detail.userInfo
     }
   },
-
-  // 上传图片
-  doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-
-        wx.showLoading({
-          title: '上传中',
-        })
-
-        const filePath = res.tempFilePaths[0]
-        
-        // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
-      },
-      fail: e => {
-        console.error(e)
-      }
-    })
+  async getPageTip(pageNo=1){
+  
+    try{
+      const {pageSize} = this.data;
+      let {list,total}=await getTip(pageNo,pageSize);
+      console.log(list)
+      this.setData({
+        pageNo,
+        hasMore:total<pageNo*pageSize,
+        tips:list
+      })
+    }catch(err){
+      console.log(err)
+      wx.showToast({
+        title: '加载动态失败',
+        icon:"none"
+      })
+    }
+    
   },
-
+  async countTip(){
+  
+    try{
+      let res =await countTip();
+      this.setData({
+        count:{
+          public:res.public||0,
+          private:res.private||0
+        }
+      })
+     
+    }catch(err){
+      console.log(err)
+    }
+    
+  },
+  
 })

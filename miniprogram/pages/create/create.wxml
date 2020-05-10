@@ -1,26 +1,30 @@
 <!--miniprogram/pages/create/create.wxml-->
+
+
 <view class="cell mb-20">
   <textarea class="content" data-key="form.content" bindinput="handleFieldChange" placeholder="此时此刻你想写点什么..." focus />
   <image-picker images="{{form.images}}" data-key="form.images" bindchange="handleFieldChange"></image-picker>
 </view>
 
-<view catchtap="navigateToLocation" class="cell cell-row"  >
+<view class="cell cell-row " >
+  <text class="cell-label"><text class="icon icon-tag mr-30"></text>标记</text>
+  <view class="ml-20" catchtap="handleTipColorChange">
+    <view wx:for="{{colors}}" data-color="{{item}}" wx:key="item" class="badge {{item}} {{form.color == item?'badge-active':''}}"></view>  
+  </view>
+</view>
+
+<view class="cell cell-row cell-hover" catchtap="showScopedPicker">
+  <text class="icon icon-who mr-30"></text>
+  <text class="cell-label">谁可以看</text>
+  <text class="cell-value">{{form.scoped}}<text class="icon icon-arrow ml-10"></text></text>
+</view>
+
+<view catchtap="navigateToLocation" class="cell cell-row cell-hover"  >
   <text class="icon icon-location mr-30"></text>
   <text class="cell-label one-line" data-line-num="2">{{form.address||"我的位置"}}</text>
   <text class="icon icon-arrow ml-20"></text>
 </view>
 
-
-<!-- <view class="cell cell-row " >
-  <text class="icon icon-who mr-30"></text>
-  <text class="cell-label">谁可以看</text>
-  <text class="cell-value">我的位置<text class="icon icon-arrow ml-10"></text></text>
-</view>
-
-<view class="cell cell-row " >
-  <text class="cell-label"><text class="icon icon-tag mr-30"></text>标签</text>
-  <text class="ml-20">我的位置<text class="icon icon-arrow ml-10"></text></text>
-</view> -->
 
 <button class="submit-btn" bindtap="handleSubmit">提交</button>
 

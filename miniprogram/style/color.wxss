@@ -1,0 +1,26 @@
+
+.red{
+  background-color: #EB5D4E;
+  border-color: #EB5D4E;
+}
+
+.yellow{
+  background-color:  #F0D84D;
+  border-color: #F0D84D;
+}
+
+
+.green{
+  background-color: #80FC6E;
+  border-color: #80FC6E;
+}
+
+.blue{
+  background-color:  #418CF7;
+  border-color: #418CF7;
+}
+
+.purple{
+  background-color:  #C274F7;
+  border-color: #C274F7;
+}

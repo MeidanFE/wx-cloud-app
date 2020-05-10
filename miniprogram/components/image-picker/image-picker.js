@@ -1,5 +1,5 @@
 // components/image-picker/image-picker.js
-import uuid from "../../utils/uuid.js";
+
 
 Component({
   /**
@@ -36,7 +36,7 @@ Component({
         });
 
         let {images} = this.properties;
-        images = tempFiles.map(file=>file.tempFilePath);
+        images = images.concat(tempFiles.map(file=>file.tempFilePath));
 
         this.triggerEvent("change",{value:images})
       }catch(err){
@@ -47,7 +47,7 @@ Component({
 
         wx.showToast({
           title: '添加图片失败',
-          icon: 'warn'
+          icon: 'none'
         })
       }
       

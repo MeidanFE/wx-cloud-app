@@ -1,4 +1,4 @@
-const app = getApp();
+
 
 export const router = (path,data)=>request({name:"router",path,data});
 
@@ -6,6 +6,7 @@ export default function request({name,path,data}){
   console.log(name,path,data)
 
   wx.showLoading()
+  const app = getApp();
 
   return new Promise(function(resolve,reject){
 

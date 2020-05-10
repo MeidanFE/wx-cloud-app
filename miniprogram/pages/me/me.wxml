@@ -14,22 +14,15 @@
     请登录
   </button>
 
-  <view class="tip">
+  <view class="tip" >
     <view class="tip-label">动态</view>
-    <text class="tip-total">28</text><text class="tip-unit">个</text>
-    <!-- <view class="tip-number">公开12个,悄悄话16个</view> -->
+    <text class="tip-total">{{count.public+count.private}}</text><text class="tip-unit">个</text>
+    <view class="tip-number">公开{{count.public}}个,悄悄话{{count.private}}个</view>
   </view>
   
 </view>
 <scroll-view class="tip-list" scroll-y>
-  <tip-card class="tip-list-item"></tip-card>
-  <tip-card></tip-card>
-  <tip-card></tip-card>
-  <tip-card></tip-card>
-  <tip-card></tip-card>
-  <tip-card></tip-card>
-  <tip-card></tip-card>
-  <tip-card></tip-card>
+  <tip-card wx:for="{{tips}}" item="{{item}}" wx:key="item"/>
 </scroll-view>
 
   <!-- 用户 openid -->

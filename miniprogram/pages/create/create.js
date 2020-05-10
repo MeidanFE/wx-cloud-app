@@ -1,6 +1,12 @@
 // miniprogram/pages/create/create.js
 const chooseLocation = requirePlugin('chooseLocation');
+import {reverseGeocoder} from "../../utils/mapSDK";  
+
 import { createTip } from "../../api/tip.js";
+import uuid from "../../utils/uuid.js";
+import {colors} from "../../utils/constants";
+
+const app = getApp();
 
 Page({
 
@@ -8,14 +14,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    colors,
     form:{
       address:"",
       lat:0.0,
       lng:0.0,
       content:"",
-      images:[]
-    }
+      images:[],
+      color:"red",
+      scoped:"公开"
+    },
   },
 
   /**
@@ -65,26 +73,25 @@ Page({
   onUnload() {
     console.log("onUnload")
   },
-  getCurrentLocation(){
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res)=> {
-        const {latitude,longitude} = res;
-        
-        this.setData({
-          "form.lat":latitude,
-          "form.lng":longitude
-        })
-        // const latitude = res.latitude    // 纬度，范围为 -90~90，负数表示南纬
-        // const longitude = res.longitude  // 经度，范围为 -180~180，负数表示西经
-        // const speed = res.speed          // 速度，单位 m/s
-        // const accuracy = res.accuracy    // 位置的精确度
-      }
-     })
+  async getCurrentLocation(){
+
+   let {result} = await reverseGeocoder({});
+ 
+   this.setData({
+      "form.lat":result.location.lat,
+      "form.lng":result.location.lng,
+      "form.address":result.address
+   })
+    
+    // const latitude = res.latitude    // 纬度，范围为 -90~90，负数表示南纬
+    // const longitude = res.longitude  // 经度，范围为 -180~180，负数表示西经
+    // const speed = res.speed          // 速度，单位 m/s
+    // const accuracy = res.accuracy    // 位置的精确度
+   
   },
   navigateToLocation(){
     
-    const key = '5NQBZ-2V5WS-OXUO6-6HICL-6RZK3-OPFQY'; //使用在腾讯位置服务申请的key
+    const key = app.globalData.mapKey; //使用在腾讯位置服务申请的key
     const referer = 'Simon-小程序'; //调用插件的app的名称
     const location = JSON.stringify({
       latitude: this.data.form.lat,
@@ -97,7 +104,7 @@ Page({
     });
   },
   handleFieldChange(e){
-    console.log(e)
+  
     const {value} = e.detail;
     const {key} = e.target.dataset;
     this.setData({
@@ -105,23 +112,70 @@ Page({
     })
   },
   async handleSubmit(){
+    const {userInfo,openId} = app.globalData;
+    if(!openId || !userInfo.nickName){
+     
+      wx.switchTab({
+        url: '/pages/me/me',
+        success:()=>{
+          wx.showToast({
+            title: '请登录',
+            icon:"none"
+          })
+        }
+      })
+      
+      return;
+    }
 
-    const uploadTasks = tempFiles.map(file=> {
-      const cloudPath = uuid() + file.tempFilePath.match(/\.[^.]+?$/)[0]
+    const {images:tempFilesPath,scoped,...rest} = this.data.form;
+
+    const uploadTasks = tempFilesPath.map(filePath=> {
+      const cloudPath = uuid() + filePath.match(/\.[^.]+?$/)[0]
       return wx.cloud.uploadFile({
         cloudPath,
-        filePath:file.tempFilePath, // 文件路径
+        filePath, // 文件路径
       })
     })
 
     let uploadRes =  await Promise.all(uploadTasks)    
 
     let {images} = this.properties;
-    images = images.concat(tempFiles.map((img,idx)=>{
-      img.fileID = uploadRes[idx].fileID;
-      return img;
-    }))
+    images = uploadRes.map((img)=>{
+      return img.fileID;
+    })
   
-    createTip(this.data.form)
+    await createTip({
+      ...rest,
+      images,
+      scoped:{
+        "公开":"public",
+        "悄悄话":"private",
+      }[scoped]
+    })
+
+    wx.switchTab({
+      url: '/pages/me/me',
+    })
+  },
+  handleTipColorChange(e){
+    const {color}=e.target.dataset;
+    this.setData({
+      "form.color":color
+    })
+  },
+  async showScopedPicker(){
+    const ops = ["公开","悄悄话"];
+    try{
+      const {tapIndex} = await wx.showActionSheet({
+        itemList: ops,
+      })
+      
+      this.setData({
+        "form.scoped":ops[tapIndex]
+      })
+    }catch(err) {
+      console.log(res.errMsg)
+    }
   }
 })

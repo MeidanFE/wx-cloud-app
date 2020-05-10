@@ -1,8 +1,8 @@
 <!--components/tip-card/tip-card.wxml-->
-<view class="tip tip-red tip-{{type}}">
+<view class="tip {{item.color}}">
   <view class="tip-content">
-    <view class="tip-title">爱读书优化细节</view>
+    <view class="tip-title">{{item.content}}</view>
      <view class="tip-time">3月19日 15:32</view>
   </view>
-  <image class="star" src="./icon/icon_star.png" mode="widthFix"></image>
+  <!-- <image class="star" src="./icon/icon_star.png" mode="widthFix"></image> -->
 </view>

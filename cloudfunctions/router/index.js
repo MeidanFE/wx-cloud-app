@@ -9,7 +9,7 @@ const globalContext = require('./middleware/global-context');
 
 // 路由
 const {login} = require('./controller/user');
-const {createTip} = require('./controller/tip');
+const {createTip,getTip,countTip} = require('./controller/tip');
 
 // 初始化 cloud
 cloud.init({
@@ -17,7 +17,9 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 
-const db = cloud.database({})
+const db = cloud.database({
+  // env: cloud.DYNAMIC_CURRENT_ENV
+})
 
 exports.main = (event, context) => {
   console.log(event)
@@ -36,6 +38,8 @@ exports.main = (event, context) => {
     // 路由为字符串，该中间件只适用于 user 路由
     app.router('/login', ...login);
     app.router('/tip/create', ...createTip);
+    app.router('/tip/get', ...getTip);
+    app.router('/tip/count', ...countTip);
 
     return app.serve();
 }

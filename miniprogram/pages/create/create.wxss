@@ -29,7 +29,7 @@ page {
   align-items: center;
 }
 
-.cell-row:active{
+.cell-hover:active{
   background: rgba(255,255,255,.3);
 }
 
@@ -70,5 +70,18 @@ page {
   background-color: rgba(255,255,255,.8);
 }
 
+.badge{
+  display: inline-block;
+  width: 50rpx;
+  height:50rpx;
+  box-sizing: border-box;
+  margin:0 16rpx;
+  border:6rpx solid transparent;
+  border-radius: 999rpx;
+}
+
+.badge-active{
+  border-color: #fff;
+}
 
 
