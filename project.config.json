@@ -1,0 +1,57 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"appid": "wx73e3c07137cf11d5",
+	"projectname": "simon-lab",
+	"libVersion": "2.11.0",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
+}

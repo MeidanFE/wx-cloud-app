@@ -1,0 +1,59 @@
+/* components/image-picker/image-picker.wxss */
+
+.image-picker{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 34rpx;
+  justify-content: center;
+}
+
+.image{
+  position: relative;
+  padding-top: 100%;
+
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.image-delete{
+  position: absolute;
+  top:0;
+  right:0;
+  transform: translate(30%,-30%);
+  width: 50rpx;
+  height:50rpx;
+  border-radius: 999px;
+
+  background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEBElEQVRoQ+1ZTYwURRT+3mS9a7JdQzgg0YgHDYpymdqBaKbn4HpZYxbhoAkQPSAH0L3pQQ7eJHjwJ9GIRg+6a4wkBjh0TdjgTM1FQAkcXANZOLk9JHrzQvqZ7tmZbWZ6eqq6Z3cdYid9e+9776t671X114Qxf2jM88f/BDo7+Gel/MhEIZhipmcA3s7AdrTf8FkmYBmgZSK+fDcoNLbU6jdHsfu5dsCvTk0T8wwIkhlP2CREhOtgaCY6I7zGORvfuG0mAr47VQb4KIBXsgbu8ZsH6COhGnVbPGsCLVd+xsDrtoFM7An43FH6DRPbjo0VAd+VPwMo2wTIYFsXSu8x9TMmsOLKWwRsMwXOY8fA7aLSD5tgGBHwXckmYKO2EUoPzW+owYpb+o1AO0ednAkeg68WVfOpNNtUAn5FLoAwaxJs3WwY34ua3jcIfyCB9Zw2tmTTplMigdU5H06c/9BDe5LOiQEE5HcjPKRGtQjzQun9vWB9BMLrAZjPjirqSHGIXuy9dvQRuOPKLwLgkFVg5ksA3TRteCL6iYNgK4ietYlTAE5PKn047tNHoOXK3xnYYQ7Mi0I1nw/tWxW5nwnfpvkycKKo9Huhje+WLgD0nGksApYcpR8fSMCv7n0MfHfJFDCy6xlzvisPAjidhBFPPiKQZUzTxA7hXfyjg3/PDqQFTz1MGAecmg4bP3pWKvIIET6O+/QlXy3NgmnBarHaxoeE0l8mEmi5U6cYfCwDaB/wSlW+TYwP2pu0VjbRymdPHgT60FGN4wMIyB8ZmMlIAMx4s1jTn3T8fVe+w8ADnZrPm3zoT8AZR+mXBpXQFQBPZyUQrTZhrujpk0kYeVY+hverUHrXIAJ/AXgwD4FV33eF0u/HcUaUfAj5t1D6ofuWQO4SItBbjmqc2pQSark5mxg4UlT6024TV0uzBEw4XrN7uOUtpdQmzjVGCQeFp7+KJ7825/mwUM3u4ZaHROoYvVOVrwaMr22bmHoOssQEiY8Kr9k93LKSKBBem/T0N4lNHKprBQpuWBEgPi+85nTyyt+LRIQ5JzZi/WrpHJhesIkXcOHRuKrXf5mrymtWKhvzJVFr7rY4pLoj1q+UfrG5kYZqnuPpJ+OEk26jGYQrXgThH/PV5MV2EuY30dVTuE/4uv8+aKJScMf4k7JNIBJvx/ejPiQx1rJK7Dq8EWLusCmaKvYaSIsbJ+r2MjEReYcSWG3q8RV3O6uykSKviaibeJUYVoyZVIRhoP11kyrm9poblVDcaT2n07r/YlqbTmP8ky++G6GOWmB+mYGynZoXqQtLBNQDoh82/Ddr8udipOqV239zBv/oDhsUNFGPq2u2bZJ6G80Dthm+1k28GUmmxRx7Av8CCgLEQOJ3+8wAAAAASUVORK5CYII=) no-repeat center /100%;
+}
+
+.add-btn{
+  position: relative;
+  padding-top: 100%;
+  background-color: rgb(0,0,0,.4);
+  
+}
+
+.add-btn-content{
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn-icon{
+  display: block;
+  width: 36%;
+  margin-bottom: 10rpx;
+}
+
+.add-btn-text{
+  font-size: 24rpx;
+  color: #fff;
+}

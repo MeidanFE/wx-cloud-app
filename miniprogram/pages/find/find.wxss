@@ -1,0 +1,8 @@
+/* miniprogram/pages/find/find.wxss */
+
+page {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

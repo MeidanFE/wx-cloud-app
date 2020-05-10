@@ -1,0 +1,18 @@
+ /* 单行省略显示 */
+ .one-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 多行省略显示 */
+.two-line {
+  overflow: hidden;
+  /* 将对象作为弹性伸缩盒子模型显示 。 */
+  display: -webkit-box;
+  /* 设置或检索伸缩盒对象的子元素的排列方式 。 */
+  -webkit-box-orient: vertical;
+  /* 显示为文本行数 */
+  -webkit-line-clamp: 2;
+  box-sizing: border-box;
+}

@@ -1,0 +1,19 @@
+.mb-10{
+  margin-bottom: 10rpx;
+}
+
+.mb-20{
+  margin-bottom: 20rpx;
+}
+
+.mb-30{
+  margin-bottom: 30rpx;
+}
+
+.mr-30{
+  margin-right: 30rpx;
+}
+
+.ml-10{
+  margin-left: 10rpx;
+}

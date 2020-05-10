@@ -1,0 +1,97 @@
+/**index.wxss**/
+
+page {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header{
+  position: relative;
+  height: 40vh;
+  overflow: hidden;
+
+  color:#ffffff;
+}
+
+.bg-img{
+  width: 100vw;
+  filter: brightness(.6);
+}
+
+
+.user{
+  position: absolute;
+  top:20rpx;
+  left: 40rpx;
+  margin-bottom: 60rpx;
+}
+
+.user-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.user-name{
+  font-size: 40rpx;
+  vertical-align: middle;
+}
+
+.login-btn{
+  position: absolute;
+  top:20rpx;
+  left: 40rpx;
+  background: none;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 32rpx;
+  padding: 0;
+  text-align: left;
+}
+
+.tip{
+  position: absolute;
+  bottom:20rpx;
+  left: 40rpx;
+}
+
+.tip-label{
+  font-size: 28rpx;
+}
+
+
+.tip-total{
+  font-size: 120rpx;
+  font-weight: bold;
+}
+
+.tip-unit{
+  font-size: 28rpx;
+  font-weight: normal;
+  margin-left: 30rpx;
+}
+
+.tip-number{
+  font-size: 36rpx;
+}
+
+.user-login{
+  position: absolute;
+  bottom:20rpx;
+  left: 40rpx;
+}
+
+.tip-list{
+  height: 60vh;
+  box-sizing: border-box;
+}
+
+
+
+
+
+

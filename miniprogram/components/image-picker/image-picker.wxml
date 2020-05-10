@@ -1,0 +1,12 @@
+<!--components/image-picker/image-picker.wxml-->
+<view class="image-picker">
+  <view wx:for="{{images}}" style="background-image:url({{item}})" wx:key="item" class="image">
+    <view data-idx="{{index}}" catchtap="removeImage"  class="image-delete" ></view>
+  </view>
+  <view class="add-btn" catchtap="addImage">
+    <view class="add-btn-content">
+      <image src="./icon/icon_add_image.png" class="add-btn-icon" mode="widthFix"></image>
+      <text class="add-btn-text">添加图片</text>
+    </view>
+  </view>
+</view>

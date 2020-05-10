@@ -1,0 +1,74 @@
+/* miniprogram/pages/create/create.wxss */
+
+page {
+  position: relative;
+  background: #000;
+}
+
+.cell{
+  position: relative;
+  padding: 36rpx;
+  background: rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+
+
+.content{
+  height: 20vh;
+  margin-bottom: 36rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+
+
+.cell-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell-row:active{
+  background: rgba(255,255,255,.3);
+}
+
+.cell-label{
+  flex:1;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.cell-value{
+  color:rgba(255,255,255,.7);
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+
+.submit-btn{
+  position: fixed;
+  bottom: 80rpx;
+  right: 60rpx;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 110rpx !important;
+  height: 110rpx;
+  padding: 0;
+  border-radius: 999px;
+
+  font-size: 32rpx;
+  background-color: rgb(42, 226, 207);
+  color: #fff;
+}
+
+.submit-btn:active{
+  background-color: rgba(255,255,255,.8);
+}
+
+
+

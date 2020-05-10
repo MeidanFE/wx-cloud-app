@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+   "tip-card":"/components/tip-card/tip-card"
+  }
+}
