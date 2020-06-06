@@ -13,20 +13,20 @@
   </view>
 </view>
 
-<view class="cell cell-row cell-hover" catchtap="showScopedPicker">
+<view class="cell cell-row " hover-class="cell-hover" catchtap="showScopedPicker">
   <text class="icon icon-who mr-30"></text>
   <text class="cell-label">谁可以看</text>
   <text class="cell-value">{{form.scoped}}<text class="icon icon-arrow ml-10"></text></text>
 </view>
 
-<view catchtap="navigateToLocation" class="cell cell-row cell-hover"  >
+<view catchtap="navigateToLocation" class="cell cell-row"  hover-class="cell-hover">
   <text class="icon icon-location mr-30"></text>
   <text class="cell-label one-line" data-line-num="2">{{form.address||"我的位置"}}</text>
   <text class="icon icon-arrow ml-20"></text>
 </view>
 
 
-<button class="submit-btn" bindtap="handleSubmit">提交</button>
+<button class="submit-btn" hover-class="submit-btn-active" bindtap="handleSubmit">提交</button>
 
 
 

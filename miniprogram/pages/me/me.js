@@ -10,7 +10,7 @@ Page({
     userInfo: {},
     tips:[],
     pageNo:1,
-    pageSize:1,
+    pageSize:10,
     hasMore:true,
     count:{
       public:0,

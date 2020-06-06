@@ -29,7 +29,7 @@ page {
   align-items: center;
 }
 
-.cell-hover:active{
+.cell-hover{
   background: rgba(255,255,255,.3);
 }
 
@@ -66,7 +66,7 @@ page {
   color: #fff;
 }
 
-.submit-btn:active{
+.submit-btn-active{
   background-color: rgba(255,255,255,.8);
 }
 
