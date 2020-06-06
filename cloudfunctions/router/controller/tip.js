@@ -59,7 +59,7 @@ exports.getTip = [
       },
     })
     
-    const {data} = await query.skip((pageNo - 1) * pageSize).limit(pageNo).get();
+    const {data} = await query.skip((pageNo - 1) * pageSize).limit(pageSize).get();
     const {total} = await query.count() ;
 
     ctx.body = {
